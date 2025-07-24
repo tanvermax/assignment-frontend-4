@@ -1,18 +1,21 @@
+// Add this to your root layout
 
+// Then use <Toaster /> in your layout
 
 import { Outlet } from 'react-router'
-import  Navbar  from './components/layout/Navber'
+import Navbar from './components/layout/Navber'
 import Footer from './components/layout/Footer'
-  import { ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
 
   return (
     <>
-     <ToastContainer />
-   <Navbar/>
-   <Outlet/>
-   <Footer/>
+      <ToastContainer />
+     
+      <Navbar />
+      <Outlet />
+      <Footer />
     </>
   )
 }

@@ -10,8 +10,14 @@ import { Input } from "@/components/ui/input";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import type { IBook } from "@/types";
 import { toast } from "react-toastify";
+import { Link } from "react-router";
 
-export default function BookListTable({ book, onDeleteSuccess }) {
+interface BookListTableProps {
+  book: IBook;
+  onDeleteSuccess?: () => void;
+}
+
+export default function BookListTable({ book, onDeleteSuccess }: BookListTableProps) {
   const [deleteBook] = useDeleteBookMutation();
   const [updateBook] = useUpdateBookMutation();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -74,7 +80,7 @@ export default function BookListTable({ book, onDeleteSuccess }) {
 
   return (
     <div>
-      <Card key={book.id} className="hover:shadow-lg transition-shadow">
+      <Card key={book._id} className="hover:shadow-lg transition-shadow">
         <CardHeader>
           <div className="flex justify-between items-start">
             <CardTitle>{book.title}</CardTitle>
@@ -195,6 +201,12 @@ export default function BookListTable({ book, onDeleteSuccess }) {
               disabled={book.copies <= 0 || borrowCount < 1}
             >
               Borrow
+            </Button>
+            <Button
+className="bg-blue-400"
+
+            >
+              <Link to={`/bookdetails/${book._id}`} >Details</Link>
             </Button>
           </div>
 
